@@ -1,10 +1,10 @@
-package controller;
+package com.kadiremreozcan.springbootstarter.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloConroller {
+public class HelloController {
 	
 	@RequestMapping("/hello")
 	public String sayHi() {
