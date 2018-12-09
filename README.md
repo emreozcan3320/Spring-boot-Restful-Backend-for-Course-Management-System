@@ -153,6 +153,18 @@ public class TopicController {
 }
 ```
 
+##### @RequestBody and POST Request
+Simply put, the _@RequestBody_ annotation maps the _HttpRequest_ body to a transfer or domain object, enabling automatic deserialization of the inbound _HttpRequest_ body onto a Java object.
+```java
+@RequestMapping(method=RequestMethod.POST,value="/topics")
+	public void addTopic(@RequestBody Topic topic) {
+		topicService.addTopic(topic);
+	}
+```
+
+Spring automatically deserializes the JSON into a Java type assuming an appropriate one is specified. By default, the type we annotate with the _@RequestBody_ annotation must correspond to the JSON sent from our client-side controller:
+
+
 
 #### 3. @Service  
 ```java
