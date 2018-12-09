@@ -5,7 +5,7 @@
 </p>
 
 
-
+![enter image description here](http://3.bp.blogspot.com/-sjgFH5Gem7I/VgsTuEIhpnI/AAAAAAAADgY/4vzcmUjahPw/s1600/spring_security_spring_data_jpa.png)
 > ***This ReadMe file is about Spring-boot, development process, and the aplication. I keep that notes to assist  my futher project for my personal usage. I use many websites, videos, and tutorial when creating that ReadMe file. You can find that source at the and of file***
 > 
 # Course Management System
@@ -49,6 +49,11 @@ public class CourseApiApp {
  - Starts Spring application context
  - Performs class path scann
  - Starts Tomcat server
+ 
+ ### Spring Using application properties
+ Various properties can be specified inside your `application.properties` file, inside your `application.yml` file, or as command line switches. This appendix provides a list of common Spring Boot properties and references to the underlying classes that consume them.
+ 
+> [Click for Docs and Examples](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
 
 ### Creating a Controller
 #### 1. Spring MVC  _@Controller_
