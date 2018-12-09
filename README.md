@@ -132,10 +132,81 @@ public class IndexController {
 ```
 With the preceding code, requests to `/home` will be handled by `get()` while request to `/home/index` will be handled by `index().`
 
+##### @PathVariable
+Annotation which indicates that a method parameter should be bound to a URI template variable. Supported for `RequestMapping` annotated handler methods.
+```java
+@RestController
+public class TopicController {
+	
+	@Autowired
+	private TopicService topicService;
+	
+	@RequestMapping("/topics")
+	public List<Topic> getAllTopics() {		
+		return topicService.getAllTopics();
+	}
+	
+	@RequestMapping("/topics/{id}")
+	public Topic getSingleTopic(@PathVariable String id) {		
+		return topicService.getSingleTopic(id);
+	}	
+}
+```
+
+
+#### 3. @Service  
+```java
+@Service
+public class VehicleService {
+// ...
+}
+```
+
+Indicates that an annotated class is a "Service", originally defined by [*Domain-Driven Design (Evans, 2003)*](https://www.javaworld.com/article/2078042/java-app-dev/domain-driven-design-with-java-ee-6.html) as "an operation offered as an interface that stands alone in the model, with no encapsulated state."
+
+May also indicate that a class is a "[Business Service Facade](https://www.dineshonjava.com/session-facade/)" (in the Core J2EE patterns sense), or something similar. This annotation is a general-purpose stereotype and individual teams may narrow their semantics and use as appropriate.
+
+> The **Session Facade** pattern’s core application is development of enterprise apps. You can also call it a logical extension of **[GoF designs](https://www.dineshonjava.com/design-patterns_25/)**. The pattern encases the interactions which are happening between the low-level components, which is Entity EJB. It is implemented as a higher level component, Session EJB. After which, it is responsible for providing a common and an only interface in order for the app to function or a part of the app.
+> ## Session Facade Pattern
+> 
+> It also reduces or completely ends the [coupling](https://www.geeksforgeeks.org/coupling-in-java/) between the lower
+> level components which in turn simplifies the design. The structure of
+> session facade pattern is such that it has client object, session
+> facade object, and business object. All of these have certain problems
+> to cater and certain tasks to perform.
+
+#### 4. @Autowired
+
+> [*click for detail*](https://www.baeldung.com/spring-autowire)
+
+`@Autowired` Annotations. This annotation allows Spring to resolve and inject collaborating beans into your bean. Autowiring can be used on properties, setters, and constructors.
+
+The annotation can be used directly on properties, therefore eliminating the need for getters and setters:
+```java 
+@Component("fooFormatter") 
+public class FooFormatter {
+	public String format() { 
+		return "foo"; 
+	} 
+}
+```
+```java
+@Component 
+public class FooService { 
+	@Autowired 
+	private FooFormatter fooFormatter; 
+}
+```
+In the above example, Spring looks for and injects _fooFormatter_ when _FooService_ is created.
+
+
+
 > Resource:
 > - [JavaBrains](https://javabrains.io/courses/spring_bootquickstart/) 
 > - [bealdung](https://www.baeldung.com/) 
 > - [Spring Docs](https://spring.io/docs)
 > - [springframework.guru](https://springframework.guru/)
+> - [Dinesh on Java](https://www.dineshonjava.com/session-facade/)
+> - [GeekForGeek](https://www.geeksforgeeks.org/coupling-in-java/)
 
 
