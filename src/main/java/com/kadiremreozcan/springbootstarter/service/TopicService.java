@@ -1,5 +1,6 @@
 package com.kadiremreozcan.springbootstarter.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,10 @@ public class TopicService {
 	private TopicRepository topicRepository;
 
 	public List<Topic> getAllTopics() {
-		return topicRepository.findAll();
+		List<Topic> topics =new ArrayList<>();
+		topicRepository.findAll().forEach(topics::add);
+		
+		return topics;	
 	}
 
 	public Topic getSingleTopic(Long id) {

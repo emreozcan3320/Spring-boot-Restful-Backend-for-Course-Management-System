@@ -42,8 +42,8 @@ public class TopicController {
 	}
 	
 	@PutMapping("/topics/{id}")
-	public void UpdateTopic(@RequestBody Topic topic, @PathVariable long id) {
-		
+	public Topic UpdateTopic(@RequestBody Topic topic, @PathVariable long id) {
+		return topicService.getSingleTopic(id);	
 	}
 	
 	@DeleteMapping("/topics/{id}")

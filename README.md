@@ -1,3 +1,4 @@
+
  ![enter image description here](https://pbs.twimg.com/media/DU7GUGCV4AAf90X.jpg)
 
 <p align="center">
@@ -166,12 +167,32 @@ Simply put, the _@RequestBody_ annotation maps the _HttpRequest_ body to a trans
 		topicService.addTopic(topic);
 	}
 ```
+OR
+```java
+@PostMapping("/topics")
+	public Topic UpdateTopic(@RequestBody Topic topic, @PathVariable long id) {
+		return topicService.getSingleTopic(id);	
+	}
+	
 
+```
 Spring automatically deserializes the JSON into a Java type assuming an appropriate one is specified. By default, the type we annotate with the _@RequestBody_ annotation must correspond to the JSON sent from our client-side controller:
 
+##### @RequestBody, UPDATE  And DELETE
+```java
+   @PutMapping("/topics/{id}")
+   public Topic UpdateTopic(@RequestBody Topic topic,@PathVariable long id) {
+		return topicService.getSingleTopic(id);	
+	}
+	
+	@DeleteMapping("/topics/{id}")
+	public void DeleteTopic( @PathVariable Long id) {
+		topicService.deleteTopic(id);
+	}
+```
 
+#### 3. @Service
 
-#### 3. @Service  
 ```java
 @Service
 public class VehicleService {
