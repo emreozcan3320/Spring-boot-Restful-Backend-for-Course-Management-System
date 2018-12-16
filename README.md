@@ -1,18 +1,27 @@
 
- ![enter image description here](https://pbs.twimg.com/media/DU7GUGCV4AAf90X.jpg)
-
+![enter image description here](http://3.bp.blogspot.com/-sjgFH5Gem7I/VgsTuEIhpnI/AAAAAAAADgY/4vzcmUjahPw/s1600/spring_security_spring_data_jpa.png)
 <p align="center">
 	 <img src="https://maven.apache.org/images/maven-logo-black-on-white.png" alt="maven">
 </p>
 
-
-![enter image description here](http://3.bp.blogspot.com/-sjgFH5Gem7I/VgsTuEIhpnI/AAAAAAAADgY/4vzcmUjahPw/s1600/spring_security_spring_data_jpa.png)
 > ***This ReadMe file is about Spring-boot, development process, and the aplication. I keep that notes to assist  my futher project for my personal usage. I use many websites, videos, and tutorial when creating that ReadMe file. You can find that source at the and of file***
 > 
 # Course Management System
 
-This is a Maven Spring-boot restfull backend project.
+This is a Maven Spring-boot restfull backend project. For now used tecnologies as follow;
+1- Spring Boot
+2- Spring JPA
+3- H2 Embeded Database
+4- Maven
 
+> Simple Youtube [Tutorial](https://www.youtube.com/watch?v=msXL2oDexqw&list=PLmbC-xnvykcghOSOJ1ZF6ja3aOgZAgaMO)
+
+***Features to Add***
+*1- Spring Security
+2- Jersey
+3- MySql or Oracle*
+
+> Very Detailed Youtube [Tutorial](https://www.youtube.com/watch?v=R9qanO4c7bY&list=PLzS3AYzXBoj8UcLsBN3UXd7Nf1T4ZyJa0)
 
  ## Statring
  
@@ -21,6 +30,38 @@ This is a Maven Spring-boot restfull backend project.
  
  - I create a maven project and follow the steps at [Building an Application with Spring Boot](https://spring.io/guides/gs/spring-boot/) to create a spring-boot project.
  
+## File Structure
+ ```
+course-api
+|
++-src/main/java
+|	+-com.kadiremreozcan.springbootstarter
+|	|	+-CourceApiAPP.java
+|	+-com.kadiremreozcan.springbootstarter.controller
+|	|	+-TopicController.java
+|	+-com.kadiremreozcan.springbootstarter.service
+|	|	+-TopicService.java
+|	+-com.kadiremreozcan.springbootstarter.repository
+|	|	+-TopicRepository.java
+|	+-com.kadiremreozcan.springbootstarter.pojo
+|	|	+-Topic.java
+|	+-com.kadiremreozcan.springbootstarter.exeption
+|	|	+-TopicNotFoundException
+|
++-src/main/resources
+|	+-application.properties
+|
++-src/test/java
++-src/test/resources
++-JRE System Libraries
++-Maven Dependencies
++-src
+|	+-main
+|	+-test
++-target
++-pom.xml
++-README.md
+```
  # Develpment Notes
  
  ### Main method *@SpringBootApplication* 
