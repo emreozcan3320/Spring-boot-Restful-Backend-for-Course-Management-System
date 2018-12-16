@@ -1,27 +1,27 @@
 package com.kadiremreozcan.springbootstarter.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.kadiremreozcan.springbootstarter.exception.TopicNotFoundException;
 import com.kadiremreozcan.springbootstarter.pojo.Topic;
+import com.kadiremreozcan.springbootstarter.repository.TopicRepository;
 
 @Service
 public class TopicService {
 
-	List<Topic> topics = new ArrayList<>(Arrays.asList(
-			new Topic("1", "Java", "java JVM mantigi"),
-			new Topic("2", "Java", "Garage Collection Algortihm"),
-			new Topic("3", "Java", "String and String pool and intern() method")
-			));
+	@Autowired
+	private TopicRepository topicRepository;
 
 	public List<Topic> getAllTopics() {
-		return topics;
+		return topicRepository.findAll();
 	}
 
-	public Topic getSingleTopic(String id) {
+	public Topic getSingleTopic(Long id) {
 		/* 
 		 * Looping with an Iterator
 		 * */
@@ -39,31 +39,46 @@ public class TopicService {
 		 * Java 8 Stream API
 		 * */
 		
-		 return topics.stream().filter(t -> t.getId().equals(id)).findFirst().orElse(new Topic());
+		//return topics.stream().filter(t -> t.getId().equals(id)).findFirst().orElse(new Topic());
+		Optional<Topic> topic = topicRepository.findById(id);
+		if (!topic.isPresent())
+			throw new TopicNotFoundException("id-" + id);
+		return topic.get();
 		
 	}
 
-	public void addTopic(Topic topic) {
+	public Topic addTopic(Topic topic) {
 
-		topics.add(topic);
+		return topicRepository.save(topic)	;
 		
 	}
 
-	public void updateTopic(String id, Topic topic) {
+	public ResponseEntity<Object> updateTopic(Long id, Topic topic) {
 		
-		 for (int i = 0; i<topics.size();i++) {
-			 Topic t = topics.get(i);
-		        if (t.getId().equals(id)) {
-		            topics.set(i, topic);
-		        }
-		    }
+//		 for (int i = 0; i<topics.size();i++) {
+//			 Topic t = topics.get(i);
+//		        if (t.getId().equals(id)) {
+//		            topics.set(i, topic);
+//		        }
+//		    }
+		Optional<Topic> topicOptional = topicRepository.findById(id);
+		if (!topicOptional.isPresent())
+			return ResponseEntity.notFound().build();
+
+		topic.setId(id);
+		
+		topicRepository.save(topic);
+
+		return ResponseEntity.noContent().build();
 		
 	}
 	
-	public void deleteTopic(String id) {
+	public void deleteTopic(Long id) {
 
-		topics.removeIf(t->t.getId().equals(id));
+		topicRepository.deleteById(id);	
 		
 	}
+
+	
 
 }
